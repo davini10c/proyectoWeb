@@ -1,0 +1,102 @@
+<%- include('../comunes/headerMenu',{titulo:'Encargado', esEncargado:esEncargado}) %>
+
+
+<% if (esEncargado) { %>
+    <div class="container">
+        <br>
+
+        <div class="solid">
+
+            <nav>
+                <ul id='menu'>
+
+                    <li style=""><a class="nav-link" href="/Encargado/notificaciones" title='Menu'>NOTIFICACIONES</a>
+                        <ul class='menus'>
+
+                        </ul>
+                    </li>
+
+                    <li style=""><a class="nav-link" href="/Encargado/historial" title='Menu'>HISTORIAL</a>
+                        <ul class='menus'>
+
+                        </ul>
+                    </li>
+
+                    <li style=""><a class="nav-link" href="/Encargado/monitoreo " title='Menu'>MONITOREO</a>
+                        <ul class='menus'>
+
+                        </ul>
+                    </li>
+
+
+                    <li style=""><a class='prett' title='Menu'>Usuario</a>
+                        <ul class='menus'>
+                            <li><a><%= sessionUsuario %>  </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Login/logout">Salir</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </nav>
+
+
+            <div class="container" align="center">
+                <br>
+                <h1>BIENVENIDO ENCARGADO</h1>
+
+                <div align="right">
+                    <img style="height: 50px; width:50px; position: relative; top: -20px"
+                         src="https://tse3.mm.bing.net/th?id=OIP.bbXsNwMXrGKMvEjwoz6j2QHaHa&pid=Api">
+                </div>
+
+            </div>
+
+            <center>
+                <div class="row">
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr align="center">
+                            <th scope="col">NOMBRE</th>
+                            <th scope="col">DIRRECIÓN</th>
+                            <th scope="col">TELEFONO</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <% arregloUsuario.forEach((usuario)=>{ %>
+                            <tr align="center">
+                                <td>
+                                    <%= usuario.nombreUsuario %>
+                                </td>
+                                <td>
+                                    <%= usuario.direccionUsuario %>
+                                </td>
+
+                                <td>
+                                    <%= usuario.telefonoUsuario %>
+                                </td>
+
+
+                            </tr>
+
+                        <% }) %>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </center>
+
+        </div>
+    </div>
+
+
+    <%- include('../comunes/footer') %>
+    <%- include('../comunes/librerias') %>
+
+<% } %>

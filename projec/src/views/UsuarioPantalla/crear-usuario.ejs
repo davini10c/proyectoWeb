@@ -1,0 +1,117 @@
+<%- include('../comunes/header',{titulo:'Crear Usuario'}) %>
+<center>
+    <div class="container">
+        <br>
+        <div class="solid">
+
+            <br>
+            <% var creando = typeof usuario === "undefined" ? true : false; %>
+
+            <h1> <%= creando ? 'Crear' : 'Actualizar' %> Usuario</h1>
+            <p><%= creando ? 'Creando' : 'Actualizando' %> un Usuario.</p>
+
+
+            <form action="/Usuario/<%= creando ? 'crear' : 'actualizar' %>-usuario/<%= creando ? '' : usuario.idUsuario %>"
+                  method="POST">
+
+                <div class="row">
+                    <div class="col">
+                        <label for="nombreUsuario">Nombre:</label>
+                        <input id="nombreUsuario" type="text"
+                               value="<%= creando ? '' : usuario.nombreUsuario %>"
+                               class="form-control-sm" name="nombreUsuario">*
+
+                    </div>
+                    <div class="col">
+                        <label for="cedulaUsuario">Cédula:</label>
+                        <input id="cedulaUsuario" type="number"
+                               value="<%= creando ? '' : usuario.cedulaUsuario %>"
+                               class="form-control-sm" name="cedulaUsuario">*
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+
+                    <div class="col">
+                        <label for="direccionUsuario">Direcciòn:</label>
+                        <input id="direccionUsuario" type="text"
+                               value="<%= creando ? '' : usuario.direccionUsuario %>"
+                               class="form-control-sm" name="direccionUsuario">*
+
+                    </div>
+
+                    <div class="col">
+                        <label for="telefonoUsuario">Telefono:</label>
+                        <input id="telefonoUsuario" type="number"
+                               value="<%= creando ? '' : usuario.telefonoUsuario %>"
+                               class="form-control-sm" name="telefonoUsuario">*
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label for="contraseñaUsuario">Contraseña:</label>
+                        <input id="contraseñaUsuario" type="password"
+                               value="<%= creando ? '' : usuario.contraseñaUsuario %>"
+                               class="form-control-sm" name="contraseñaUsuario">*
+
+                    </div>
+
+                    <div class="col">
+
+                        <label for="hacienda">Seleccionar Hacienda:</label>
+                        <select class="form-control-sm" id=hacienda name="hacienda">
+                            <% arregloHacienda.forEach((hacienda)=>{ %>
+
+                                <option value=<%= hacienda.id %>>
+                                    <%= hacienda.nombre %>
+
+                                </option>
+                            <% }) %>
+
+                        </select> *
+
+                    </div>
+
+                    <% if (crear == 1){ %>
+
+                        <div class="col">
+
+                            <label for="rolUsuario">Seleccionar Rol:</label>
+                            <select class="form-control-sm" id=rolUsuario name="rolUsuario">
+                                <% arregloRol.forEach((rol)=>{ %>
+
+                                    <option value=<%= rol.idRol %>>
+                                        <%= rol.nombreRol %>
+
+                                    </option>
+                                <% }) %>
+
+                            </select>
+
+                        </div>
+                    <% } %>
+                </div>
+                <br>
+
+                <div class="col-sm-3">
+                    <button class="btn btn-outline-success btn-espaciado btn-block"
+                            onclick="validarNombre(event)"><%= creando ? 'Crear' : 'Actualizar' %> Usuario
+                    </button>
+
+                    <a class="btn btn-outline-danger btn-block btn-espaciado" href="/Usuario/usuario">
+                        Regresar
+                    </a>
+                </div>
+
+            </form>
+
+            <br>
+        </div>
+    </div>
+</center>
+
+<%- include('../comunes/librerias') %>
+<%- include('../comunes/footer') %>

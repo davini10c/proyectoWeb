@@ -1,0 +1,129 @@
+<%- include('../comunes/header',{titulo:'Usuario'}) %>
+
+<center>
+    <div class="container">
+        <br>
+        <div class="solid">
+
+            <% const existeMensaje = typeof mensaje !== "undefined" ? true : false; %>
+
+            <% if(existeMensaje){ %>
+                <div class="animated fadeOut alert alert-<%= accion %>" role="alert">
+                    MENSAJE: <%= mensaje %>
+                </div>
+            <% } %>
+
+            <nav>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Rol/menuAdministrador" style="color: black">Ménu Principal</a>
+                    </li>
+                </ul>
+            </nav>
+
+
+            <h1> Lista de Usuarios</h1>
+            <p>Crea, edita, actualiza y busca Usuarios. Puedes buscar
+                Usuarios por nombre o Cédula.
+            </p>
+
+
+            <a class="quitar-decoracion" href="/Usuario/crear-usuario">
+                <button class="btn btn-outline-success btn-espaciado ">
+                    Crear Usuario
+                </button>
+            </a>
+
+            <br>
+            <br>
+            <div class="container" align="center">
+                <form action="/Usuario/usuario" method="get">
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <input id="busqueda"
+                                       type="text"
+                                       class="form-control"
+                                       name="busqueda"
+                                       placeholder="Buscar Usuario">
+                            </div>
+                        </div>
+
+                        <div class="">
+                            <button class="btn  btn-outline-info btn-buscar"
+                                    type="submit">Buscar
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <br>
+            <table class="table table-striped ">
+                <thead>
+                <tr align="center">
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Cédula</th>
+                    <th scope="col">Contraseña</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col"> Teléfono</th>
+                    <th scope="col"> Accion</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <% arregloUsuario.forEach((usuario)=>{ %>
+
+                    <tr>
+                        <td align="center">
+                            <%= usuario.nombreUsuario %>
+                        </td>
+                        <td align="center">
+                            <%= usuario.cedulaUsuario %>
+                        </td>
+
+                        <td align="center">
+                            <%= usuario.contraseñaUsuario %>
+                        </td>
+                        <td align="center">
+                            <%= usuario.direccionUsuario %>
+                        </td>
+
+                        <td align="center">
+                            <%= usuario.telefonoUsuario %>
+                        </td>
+
+
+                        <td align="center">
+
+                            <form action="/Usuario/borrar/<%= usuario.idUsuario %>"
+                                  method="post">
+                                <button type="submit"
+                                        class="btn btn-outline-danger btn-block btn-espaciado " onclick="borrar(event)">
+                                    Eliminar
+                                </button>
+
+
+                            </form>
+
+                            <a class="quitar-decoracion" href="/Usuario/actualizar-usuario/<%= usuario.idUsuario %>">
+                                <button class="btn btn-outline-info btn-block btn-espaciado"
+                                        type="button">
+                                    Actualizar
+                                </button>
+                            </a>
+                        </td>
+
+                    </tr>
+
+                <% }) %>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</center>
+<%- include('../comunes/librerias') %>
+<%- include('../comunes/footer') %>
+

@@ -1,0 +1,101 @@
+<%- include('comunes/header',{titulo:'Crear subparcela'}) %>
+<br>
+
+
+<div class="container">
+    <% var creando = typeof subparcela === "undefined" ? true : false; %>
+
+    <h1 align="center"> <%= creando ? 'Crear' : 'Actualizar' %> Subparcela</h1>
+    <p align="center"><%= creando ? 'Creando' : 'Actualizando' %> una subparcela.</p>
+
+    <form action="/Subparcela/<%= creando ? 'crear' : 'actualizar' %>-subparcela/<%= creando ? '' : subparcela.id %>"
+          method="POST">
+        <div class="row">
+            <div class="col-sm-3">
+
+                <label for="nombre">Código subparcela</label>
+            </div>
+            <div class="col-sm-6">
+                <input id="codigo"
+                       value="<%= creando ? '' : subparcela.codigo %>"
+                       name="codigo" type="text">
+            </div>
+
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-sm-3">
+
+                <label for="medidas">Medidas subparcela</label>
+            </div>
+            <div class="col-sm-6">
+                <input id="medidas"
+                       value="<%= creando ? '' : subparcela.medidas %>"
+                       name="medidas" type="text">
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-sm-3">
+
+                <label for="parcela">Parcela</label>
+            </div>
+            <div class="col-sm-6">
+                <select class="custom-select-sm" id=parcela name="parcela">
+                    <% arregloParcelas.forEach((parcelas)=>{ %>
+                        <option value=<%= parcelas.id %>>
+                            <%= parcelas.codigo %>
+                        </option>
+
+                    <% }) %>
+                </select>
+            </div>
+
+        </div>
+
+
+        <div class="col-sm-3">
+
+            <button class="btn btn-outline-info btn-block btn-espaciado" type="reset">Resetear formulario</button>
+
+
+        </div>
+
+        <br>
+        <div align="center">
+            <div class="col-sm-6">
+
+                <button class="btn btn-outline-success btn-espaciado btn-block"
+                        onclick="validarNombre(event)"><%= creando ? 'Crear' : 'Actualizar' %> Subparcela
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+
+    <br>
+    <div align="center">
+        <div class="col-sm-6">
+
+
+            <a href="/Subparcela/subparcela">
+                <button class="btn btn-outline-danger btn-block btn-espaciado">Regresar</button>
+            </a>
+        </div>
+
+    </div>
+
+
+</div>
+
+<br>
+<%- include('comunes/librerias') %>
+<%- include('comunes/footer') %>
+
+
+

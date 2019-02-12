@@ -1,0 +1,113 @@
+<%- include('comunes/header',{titulo:'Crear Parcela'}) %>
+<br>
+<div class="container">
+    <% var creando = typeof parcela === "undefined" ? true : false; %>
+
+    <h1 align="center"> <%= creando ? 'Crear' : 'Actualizar' %> Parcela</h1>
+    <p align="center"><%= creando ? 'Creando' : 'Actualizando' %> una parcela.</p>
+
+    <form action="/Parcela/<%= creando ? 'crear' : 'actualizar' %>-parcela/<%= creando ? '' : parcela.id %>"
+          method="POST">
+        <div class="row">
+            <div class="col-sm-3">
+
+                <label for="nombre">Código parcela</label>
+            </div>
+            <div class="col-sm-6">
+                <input id="codigo"
+                       value="<%= creando ? '' : parcela.codigo %>"
+                       name="codigo" type="text">
+            </div>
+
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-3">
+
+                <label for="medidas">Medidas parcela</label>
+            </div>
+            <div class="col-sm-6">
+                <input id="medidas"
+                       value="<%= creando ? '' : parcela.medidas %>"
+                       name="medidas" type="text">
+            </div>
+
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-3">
+
+                <label for="hacienda">Hacienda</label>
+            </div>
+            <div class="col-sm-6">
+                <select class="custom-select-sm" id=hacienda name="hacienda">
+                    <% arregloHaciendas.forEach((haciendas)=>{ %>
+                        <option value=<%= haciendas.id %>>
+                            <%= haciendas.nombre %>
+                        </option>
+
+                    <% }) %>
+                </select>
+            </div>
+
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-sm-3">
+
+                <label for="usuario">Usuario</label>
+            </div>
+            <div class="col-sm-6">
+                <select class="custom-select-sm" id=usuario name="usuario">
+                    <% arregloUsuarios.forEach((usuarios)=>{ %>
+                        <option value=<%= usuarios.idUsuario %>>
+                            <%= usuarios.nombreUsuario %>
+                        </option>
+
+                    <% }) %>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="col-sm-3">
+
+            <button class="btn btn-outline-info btn-block btn-espaciado" type="reset">Resetear formulario</button>
+
+
+        </div>
+        <br>
+
+        <div align="center">
+            <div class="col-sm-6">
+
+                <button class="btn btn-outline-success btn-espaciado btn-block"
+                        onclick="validarNombre(event)"><%= creando ? 'Crear' : 'Actualizar' %> Parcela
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+
+    <br>
+    <div align="center">
+        <div class="col-sm-6">
+
+
+            <a href="/Parcela/Parcela">
+                <button class="btn btn-outline-danger btn-block btn-espaciado">Regresar</button>
+            </a>
+        </div>
+
+    </div>
+
+
+</div>
+<br>
+
+<%- include('comunes/librerias') %>
+<%- include('comunes/footer') %>
+
+

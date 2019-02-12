@@ -1,0 +1,92 @@
+<%- include('../comunes/headerMenu',{titulo:'Administrador', esAdministrador: esAdministrador}) %>
+
+
+<% if (esAdministrador){ %>
+    <div class="container">
+        <br>
+
+        <div class="solid">
+
+            <nav>
+                <ul id='menu'>
+                    <li style=""><a class='prett' title='Menu'>Usuario</a>
+                        <ul class='menus'>
+                            <li><a><%= sessionUsuario %>  </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Login/logout">Salir</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="container" align="center">
+                <br>
+                <h1>BIENVENIDO</h1>
+
+                <div align="right">
+                    <img style="height: 50px; width:50px; position: relative; top: -20px"
+                         src="https://tse3.mm.bing.net/th?id=OIP.bbXsNwMXrGKMvEjwoz6j2QHaHa&pid=Api">
+                </div>
+
+            </div>
+
+            <center>
+                <div class="row">
+
+
+                    <div class="col-sm">
+
+                        <a type='button' value='Boton' style='width:150px; height:150px; color: black'
+                           class="btn-info" href="/Region/region"><br><br>REGIÓN </a>
+
+                    </div>
+
+
+                    <div class="col-sm">
+
+                        <a type='button' value='Boton' style='width:150px; height:150px; color: black'
+                           class="btn-info" href="/Hacienda/hacienda"><br><br>HACIENDAS </a>
+
+                    </div>
+
+
+                    <div class="col-sm">
+                        <a type='button' href="/Parcela/parcelasSuboparcelas" value='Boton'
+                           style='width:150px; height:150px; color: black'
+                           class="btn-info"><br><br>PARCELA</a>
+
+                    </div>
+
+                    <div class="col-sm">
+                        <a type='button' href="/Sensor/sensor" value='Boton'
+                           style='width:150px; height:150px; color: black'
+                           class="btn-info"><br><br>ASIGNAR<br>
+                            SENSORES</a>
+                    </div>
+
+
+                    <div class="col-sm">
+                        <a type='button' href="/Usuario/usuario" value='Boton'
+                           style='width:150px; height:150px; color: black;' class="btn-info"><br><br>USUARIOS</a>
+                    </div>
+
+
+                </div>
+
+                <br>
+
+
+                <br><br>
+            </center>
+
+        </div>
+    </div>
+
+
+<% } %>
+
+<%- include('../comunes/librerias') %>
+<%- include('../comunes/footer') %>
+

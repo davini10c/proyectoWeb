@@ -1,0 +1,42 @@
+<script>
+    function borrar(evento) {
+
+        const respuesta = confirm('¿Estas seguro de Eliminar?')
+
+        if (!respuesta) {
+            event.preventDefault();
+        }
+
+    }
+
+    function validarNombre(evento) {
+        // 0) Obtener el valor del campo
+        // 1) Revisar el campo no este vacio
+        // 2) Revisar el campo tenga 3 char
+        const inputNombre = document
+            .getElementById("cedula");
+        const nombre = inputNombre.value;
+        if (nombre.length < 3) {
+            event.preventDefault()
+            alert('Error Ingrese Credenciales Correctas')
+        } else {
+
+        }
+
+    }
+
+    console.log(hacienda.regiones)
+    const etiquetaSelectRegiones = document
+        .getElementById('regiones');
+
+    arregloRegiones
+        .forEach(
+            (region) => {
+                const nuevaOption = document.createElement('option');
+                nuevaOption.value = region.id;
+                nuevaOption.innerText = region.nombre;
+                etiquetaSelectRegiones.appendChild(nuevaOption);
+            }
+        )
+
+</script>

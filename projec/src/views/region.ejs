@@ -1,0 +1,116 @@
+<%- include('comunes/header',{titulo:'Regón'}) %>
+<br>
+
+<br>
+<div class="container">
+    <div class="solid">
+
+        <nav>
+            <ul class="nav justify-content-end">
+
+                <li class="nav-item">
+                    <a href="/Rol/menuAdministrador" style="color: black">Ménu Principal</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <% const existeMensaje = typeof mensaje !== "undefined" ? true : false; %>
+
+        <% if(existeMensaje){ %>
+            <div class="animated fadeOut alert alert-<%= accion %>" role="alert">
+                MENSAJE: <%= mensaje %>
+            </div>
+        <% } %>
+
+        <br>
+        <h1 align="center"> Lista de regiones</h1>
+        <p align="center">Crea, edita, actualiza y busca regiones. Puedes buscar
+            regiones por nombre o descripcion.
+        </p>
+
+        <form action="/Region/Region" method="get">
+            <div align="center">
+                <div class="col-sm-9">
+
+                    <div class="form-group" align="center">
+                        <input id="busqueda"
+                               type="text"
+                               class="form-control"
+                               placeholder="Buscar Región"
+                               name="busqueda">
+                    </div>
+
+                </div>
+                <div class="col-sm-3">
+
+                    <button class="btn btn-outline-info btn-block btn-buscar"
+                            type="submit">Buscar
+                    </button>
+
+                </div>
+            </div>
+        </form>
+
+        <br>
+        <div align="center">
+            <div class="col-sm-9"></div>
+            <div class="col-sm-3">
+                <a class="quitar-decoracion" href="/Region/crear-region">
+                    <button class="btn btn-outline-success btn-espaciado btn-block">
+                        Crear Region
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <br>
+
+        <table class="table table-hover animated fadeInUp">
+            <caption>Lista de Regiones</caption>
+            <!-- tr -> table row -->
+            <thead>
+            <tr align="center">
+                <!-- th -> table header -->
+                <th width="30%">Nombre</th>
+                <th width="50%">Descripcion</th>
+
+                <th width="20%">Acciones</th>
+            </tr>
+            </thead>
+            <!-- tr -> table row -->
+            <tbody>
+            <% arreglo.forEach((region)=>{ %>
+                <tr align="center">
+                    <!-- td -> table detail -->
+                    <td><%= region.nombre %></td>
+                    <td><%= region.descripcion %></td>
+
+                    <td>
+                        <form action="/Region/borrar/<%= region.id %>"
+                              method="post"
+                        >
+                            <!--<button type="button">Yo no</button>-->
+                            <!--<button>Yo si</button>-->
+                            <button type="submit"
+                                    class="btn btn-outline-danger btn-block btn-espaciado"
+                                    onclick="borrar(event)">Eliminar
+                            </button>
+                        </form>
+                        <a class="quitar-decoracion" href="/Region/actualizar-region/<%= region.id %>">
+                            <button class="btn btn-outline-info btn-block btn-espaciado"
+                                    type="button">
+                                Actualizar
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+<%- include('comunes/librerias') %>
+<%- include('comunes/footer') %>

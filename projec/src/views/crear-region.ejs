@@ -1,0 +1,82 @@
+<%- include('comunes/header',{titulo:'Crear Regón'}) %>
+
+<br>
+
+<div class="container">
+    <% var creando = typeof region === "undefined" ? true : false; %>
+
+    <h1 align="center"> <%= creando ? 'Crear' : 'Actualizar' %> Region</h1>
+    <p align="center"><%= creando ? 'Creando' : 'Actualizando' %> un region.</p>
+    <br>
+
+    <form action="/Region/<%= creando ? 'crear' : 'actualizar' %>-region/<%= creando ? '' : region.id %>"
+          method="POST">
+        <div class="row">
+            <div class="col-sm-3">
+
+                <label for="nombre">Región</label>
+            </div>
+            <div class="col-sm-6">
+                <input id="nombre"
+                       value="<%= creando ? '' : region.nombre %>"
+                       name="nombre" type="text">
+            </div>
+
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-sm-3">
+
+                <label for="descripcion">Descripcion</label>
+            </div>
+            <div class="col-sm-6">
+                    <textarea name="descripcion"
+                              id="descripcion"
+                              cols="30"
+                              rows="3"><%= creando ? '' : region.descripcion %>
+                    </textarea>
+            </div>
+
+
+            <div class="col-sm-3">
+
+                <button class="btn btn-outline-info btn-block btn-espaciado" type="reset">Resetear formulario</button>
+
+
+            </div>
+
+        </div>
+
+        <br>
+        <div align="center">
+            <div class="col-sm-6">
+
+                <button class="btn btn-outline-success btn-espaciado btn-block"
+                        onclick="validarNombre(event)"><%= creando ? 'Crear' : 'Actualizar' %> Region
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+
+    <br>
+
+    <div align="center">
+        <div class="col-sm-6">
+
+
+            <a href="/Region/region">
+                <button class="btn btn-outline-danger btn-block btn-espaciado">Regresar</button>
+            </a>
+        </div>
+
+    </div>
+
+
+</div>
+
+<br>
+<%- include('comunes/librerias') %>
+<%- include('comunes/footer') %>

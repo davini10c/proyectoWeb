@@ -1,1 +1,2 @@
-# proyectoWeb
+# ProyectoWebCardenasQuinga
+Proyecto semestral

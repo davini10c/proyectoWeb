@@ -1,0 +1,66 @@
+<%- include('comunes/header',{titulo:'Sub menú Parcelas'}) %>
+
+
+<body class="center">
+
+<div class="container">
+    <br>
+
+    <div class="solid">
+
+
+        <nav>
+            <ul class="nav justify-content-end">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/Rol/menuAdministrador" style="color: black">Ménu Principal</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <div class="container" align="center">
+            <br>
+            <h1>Administración Parcelas y subparcelas</h1>
+
+            <div align="right">
+                <img style="height: 50px; width:50px; position: relative; top: -20px"
+                     src="https://tse3.mm.bing.net/th?id=OIP.bbXsNwMXrGKMvEjwoz6j2QHaHa&pid=Api">
+            </div>
+
+        </div>
+
+        <center>
+            <div class="row">
+
+
+                <div class="col-sm">
+                    <a type='button' href="/Parcela/parcela" value='Boton'
+                       style='width:200px; height:200px; color: black'
+                       class="btn-info"><br><br><br>PARCELA</a>
+
+                </div>
+                <div class="col-sm">
+                    <a type='button' href="/Subparcela/subparcela" value='Boton'
+                       style='width:200px; height:200px; color: black'
+                       class="btn-info"><br><br><br>SUBPARCELAS</a>
+                </div>
+
+
+            </div>
+
+            <br>
+
+
+            <br><br>
+        </center>
+
+    </div>
+</div>
+
+<%- include('comunes/librerias') %>
+<%- include('comunes/footer') %>
+
+
+

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Monitoreo</title>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+            integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+
+    <style type="text/css">
+
+        div.solid {
+            border-style: ridge;
+            height: auto;
+            width: border-box;
+        }
+
+        .rojo {
+            background-color: red;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+
+
+<center>
+    <div class="container">
+        <br>
+        <div class="solid">
+
+            <nav>
+                <ul class="nav justify-content-end">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Encargado/menu" style="color: black">Ménu Encargado</a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <br>
+            <h1>MONITOREO</h1>
+
+            <BR>
+            <form action=""
+                  method="POST">
+
+                <div class="row">
+
+
+                    <div class="col">
+
+                        <label for="parcela">Seleccionar Parcela:</label>
+                        <select class="form-control-sm" id=parcela name="parcela">
+                            <% arregloparcela.forEach((parcela)=>{ %>
+
+                                <option value=<%= parcela.id %>>
+                                    <%= parcela.codigo %>
+
+                                </option>
+                            <% }) %>
+
+                        </select>
+
+
+                    </div>
+
+
+                    <div class="col">
+
+                        <label for="subparcela">Seleccionar Subparcela:</label>
+                        <select class="form-control-sm" id=parcela name="subparcela">
+                            <% arreglosubparcela.forEach((subparcela)=>{ %>
+
+                                <option value=<%= subparcela.id %>>
+                                    <%= subparcela.codigo %>
+
+                                </option>
+                            <% }) %>
+
+                        </select>
+                    </div>
+                </div>
+
+
+                <br>
+                <br>
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr align="center">
+                        <th scope="col">SUBPARCELA</th>
+                        <th scope="col"> TEMPERATURA</th>
+                        <th scope="col">HUMEDAD</th>
+                        <th scope="col">RIEGO</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr align="center">
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>@fat</td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+
+
+            </form>
+
+
+            <br>
+        </div>
+    </div>
+</center>
+
+
+</body>
+</html>
